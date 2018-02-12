@@ -1,8 +1,12 @@
 FROM maven:3-jdk-7
+
+ENV VERS 4.1
+
 RUN mkdir glassfish
 RUN git clone https://github.com/javaee/glassfish.git
-RUN git checkout 4.1  \
-&& cd glassfish \
+RUN cd glassfish \
+&&  git checkout "$VERS"\
+&& mvn versions:set -DnewVersion="$VERS" \
 && mvn install \
 && mkdir -p .mvn \
 && echo "-Xmx6g -Xms1g" > .mvn/jvm.config
