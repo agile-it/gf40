@@ -1,6 +1,6 @@
 FROM maven:3-jdk-7
 RUN mkdir glassfish
-RUN git https://github.com/javaee/glassfish.git
+RUN git clone https://github.com/javaee/glassfish.git
 RUN git checkout 4.0  \
 && cd glassfish \
 && mvn install \
