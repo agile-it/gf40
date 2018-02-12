@@ -11,6 +11,9 @@ RUN cd glassfish \
 && mkdir -p .mvn \
 && echo "-Xmx4g -Xms1g" > .mvn/jvm.config \
 && mvn install \
-&& mvn sonar:sonar -Dsonar.host.url=http://piccocloud.de:33333 -Dsonar.projectKey=gf1 -Dsonar.projectDate=`git show --format=%cd --no-notes --date=short "$VERS" | head -1`
+&& rm -rf /root/.m2 \
+&& mvn sonar:sonar -Dsonar.host.url=http://piccocloud.de:33333 -Dsonar.projectKey=gf1 -Dsonar.projectDate=`git show --format=%cd --no-notes --date=short "$VERS" | head -1`\
+&& rm -rf /root/.m2 /root/.Dsonar
+
 
 VOLUME /glassfish
