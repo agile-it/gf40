@@ -9,7 +9,7 @@ RUN cd glassfish \
 && cd main \
 && mvn versions:set -DnewVersion="$VERS" \
 && mkdir -p .mvn \
-&& echo "-Xmx6g -Xms1g" > .mvn/jvm.config \
+&& echo "-Xmx4g -Xms1g" > .mvn/jvm.config \
 && mvn install \
 && mvn sonar:sonar -Dsonar.host.url=http://piccocloud.de:33333 -Dsonar.projectKey=gf1 -Dsonar.projectDate=`git show --format=%cd --no-notes --date=short "$VERS" | head -1`
 
