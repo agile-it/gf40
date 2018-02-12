@@ -4,8 +4,9 @@ ENV VERS 5.0-b06
 
 RUN mkdir glassfish
 RUN git clone https://github.com/javaee/glassfish.git
-RUN git checkout "$VERS" \
-&& cd glassfish \
+RUN cd glassfish \
+&&  git checkout "$VERS"\
+&& cd main \
 && mvn versions:set -DnewVersion="$VERS" \
 && mvn install \
 && mkdir -p .mvn \
